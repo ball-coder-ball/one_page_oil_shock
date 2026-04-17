@@ -3,207 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Convergence Trap - Comprehensive Dashboard</title>
+    <title>The Convergence Trap - Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Prompt:wght@300;400;600;700&display=swap');
-        body { font-family: 'Prompt', 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
-        .chart-container { position: relative; height: 100%; width: 100%; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Prompt:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Prompt', 'Inter', sans-serif; background-color: #0b1120; color: #f8fafc; }
+        .chart-container { position: relative; width: 100%; height: 100%; }
+        .grid-dense { display: grid; gap: 1rem; }
     </style>
 </head>
-<body class="p-4 md:p-8 flex justify-center items-start min-h-screen">
+<body class="p-4 md:p-6 flex justify-center items-start min-h-screen">
 
-    <div class="w-full max-w-[1200px] bg-slate-900 border border-slate-700 shadow-2xl rounded-2xl p-6 flex flex-col gap-6">
+    <div class="w-full max-w-[1280px] bg-[#0f172a] border border-slate-700 shadow-2xl rounded-xl p-6 flex flex-col gap-6">
         
-        <div class="border-b border-slate-700 pb-4 flex flex-col md:flex-row justify-between items-end gap-4">
+        <div class="border-b border-slate-700 pb-4 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
-                <h1 class="text-3xl font-extrabold text-white tracking-tight">🎯 The Convergence Trap</h1>
-                <p class="text-slate-400 mt-1">ความเปราะบางทางพลังงานของไทยภายใต้ภาพลวงตาตัวเลขที่ดูดี (System Dynamics & Structual Breaks)</p>
+                <div class="inline-block bg-rose-500/20 border border-rose-500/50 text-rose-400 text-xs px-2 py-1 rounded font-bold tracking-wide mb-2 uppercase">
+                    🚨 Context: April 2026 Hormuz Disruption Validated
+                </div>
+                <h1 class="text-3xl font-extrabold text-white tracking-tight leading-tight">🎯 The Convergence Trap</h1>
+                <p class="text-slate-400 mt-1 max-w-3xl text-sm leading-relaxed">
+                    "ไทยไม่ได้กำลังเปลี่ยนผ่าน แต่กำลังถูกล็อคเข้าสู่กับดักความเปราะบางเชิงโครงสร้าง (Compound Structural Vulnerability) ที่ Demand และการพึ่งพานำเข้ากลืนกิน Renewable ที่เพิ่มขึ้นไปจนหมดสิ้น"
+                </p>
             </div>
-            <div class="text-right text-xs text-slate-500 max-w-sm">
-                <b>Methodology:</b> OLS + Newey-West HAC, LMDI (Activity 8.3× Intensity), PELT Structural Breaks, Tapio Decoupling, Stock-Flow System Dynamics (MC N=5,000)
+            <div class="text-right text-xs text-slate-500 max-w-sm border-l border-slate-700 pl-4">
+                <b>Core Mechanism:</b> 2010–2024 Data Calibration<br>
+                <b>Benchmarks:</b> 59-Country Panel (GDP/Energy Peers)<br>
+                <b>Simulations:</b> Stock-flow + Monte Carlo (N=5,000)
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
             
-            <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 flex flex-col justify-between">
-                <h2 class="text-lg font-bold text-slate-200 mb-4 border-l-4 border-teal-500 pl-2">📊 The Illusion & Trap</h2>
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-indigo-500/10 rounded-full blur-xl"></div>
+                <h2 class="text-xs text-indigo-400 font-bold uppercase tracking-widest mb-2">Absorption Ratio</h2>
+                <div class="text-5xl font-extrabold text-white mb-2">3.51<span class="text-xl text-slate-400"> : 1</span></div>
+                <p class="text-xs text-slate-400">ทุกๆ 1 หน่วย RE ที่เพิ่มขึ้น<br>Demand กลืนกินไป 3.51 หน่วย</p>
+                <div class="w-full bg-slate-900 rounded p-2 mt-4 text-xs flex justify-between border border-slate-700">
+                    <span class="text-emerald-400">RE +21 TWh</span>
+                    <span class="text-rose-400">Fossil +21 TWh</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700 lg:col-span-2">
+                <h2 class="text-sm font-bold text-slate-200 mb-1 flex justify-between">
+                    <span>⚙️ LMDI Decomposition (24 Years)</span>
+                    <span class="text-rose-400">Ratio 8.3 : 1</span>
+                </h2>
+                <p class="text-xs text-slate-400 mb-3">ทำไม Carbon Intensity ลด แต่ Emissions รวมทะยานขึ้นเกือบ 2 เท่า (58 → 111 MtCO₂e)?</p>
+                <div class="h-32 chart-container">
+                    <canvas id="lmdiChart"></canvas>
+                </div>
+            </div>
+
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h2 class="text-sm font-bold text-slate-200 mb-2">🌿 Renewable Illusion</h2>
+                <p class="text-xs text-slate-400 mb-2">ไส้ในของ RE ที่ตัวเลขพาดหัวสื่อถึง</p>
+                <div class="h-28 chart-container">
+                    <canvas id="reDoughnut"></canvas>
+                </div>
+                <p class="text-[10px] text-center text-slate-500 mt-2">พลังงานสะอาดแท้จริง (Solar+Wind) มีเพียง 4.4%</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            
+            <div class="lg:col-span-2 bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                <h2 class="text-sm font-bold text-slate-200 mb-4">⚡ Triple Import Dependency Channels (เสื่อมลงพร้อมกัน p &lt; 0.001)</h2>
                 
-                <div class="grid grid-cols-2 gap-4 mb-4">
-                    <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
-                        <p class="text-xs text-slate-400">Carbon Intensity</p>
-                        <p class="text-lg font-bold text-teal-400">607 → 555 <span class="text-xs">gCO₂</span></p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700/50">
+                        <div class="text-xs text-amber-500 font-bold mb-1">1. Gas Self-Sufficiency</div>
+                        <div class="text-2xl font-bold text-white mb-1">99% <span class="text-sm text-slate-500">→</span> 59%</div>
+                        <p class="text-[10px] text-slate-400">ลดลง -1.01 pp/yr<br><span class="text-rose-400">Structural Break (2015):</span> เสื่อมเร็วขึ้น 3 เท่า</p>
                     </div>
-                    <div class="bg-slate-900 p-3 rounded-lg border border-slate-700">
-                        <p class="text-xs text-slate-400">GHG รวม</p>
-                        <p class="text-lg font-bold text-rose-500">58 → 111 <span class="text-xs">MtCO₂e</span></p>
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700/50">
+                        <div class="text-xs text-amber-500 font-bold mb-1">2. Electricity Imports</div>
+                        <div class="text-2xl font-bold text-white mb-1">3% <span class="text-sm text-slate-500">→</span> 16%</div>
+                        <p class="text-[10px] text-slate-400">เพิ่มขึ้น +0.645 pp/yr<br><span class="text-rose-400">Structural Break (2010):</span> พลิกจากลดเป็นเร่งขึ้น</p>
                     </div>
-                </div>
-
-                <div class="bg-indigo-900/30 p-4 rounded-lg border border-indigo-500/30 mb-4">
-                    <p class="text-xs text-indigo-300 uppercase tracking-wide">Absorption Ratio</p>
-                    <p class="text-3xl font-bold text-indigo-400">3.51×</p>
-                    <p class="text-xs text-slate-400 mt-1">ทุก 1 TWh RE ที่เพิ่ม Demand กลืนไป 3.51 TWh</p>
-                </div>
-
-                <div>
-                    <p class="text-xs text-slate-400 mb-2">Renewables 14.8% มาจากไหน?</p>
-                    <div class="h-32 chart-container">
-                        <canvas id="reDoughnut"></canvas>
+                    <div class="bg-slate-900 p-3 rounded border border-slate-700/50">
+                        <div class="text-xs text-amber-500 font-bold mb-1">3. Oil Self-Sufficiency</div>
+                        <div class="text-2xl font-bold text-white mb-1">22% <span class="text-sm text-slate-500">Only</span></div>
+                        <p class="text-[10px] text-slate-400">78% ต้องนำเข้า<br>63% มาจาก Middle East <br>(Exposure to Hormuz)</p>
                     </div>
                 </div>
             </div>
 
-            <div class="lg:col-span-2 bg-slate-800 rounded-xl p-5 border border-slate-700 flex flex-col">
-                <h2 class="text-lg font-bold text-slate-200 mb-2 border-l-4 border-amber-500 pl-2">🌍 Cross-Country Proof: Thailand is an Outlier</h2>
-                <p class="text-xs text-slate-400 mb-4">Quadrant: Fossil Change vs Compound Dependency (เปรียบเทียบกับ 17 Transition Peers)</p>
-                <div class="flex-grow chart-container min-h-[250px]">
-                    <canvas id="scatterChart"></canvas>
+            <div class="bg-slate-800/50 rounded-lg p-4 border border-slate-700 flex flex-col justify-center">
+                <h2 class="text-sm font-bold text-slate-200 mb-2">🌍 59-Country Benchmark</h2>
+                <div class="bg-slate-900 p-4 rounded border border-slate-700/50 h-full flex flex-col justify-center items-center text-center">
+                    <div class="text-4xl font-black text-rose-500 mb-2">0 / 59</div>
+                    <p class="text-xs text-slate-300">ไม่มีประเทศใดเลยในกลุ่ม Transition Peers ที่เผชิญ 3 ปัญหานี้พร้อมกันในขณะที่ตัวชี้วัดหน้าฉากดูดี</p>
                 </div>
             </div>
         </div>
 
-        <div class="bg-slate-800 rounded-xl p-4 border border-slate-700 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-            <div class="border-r border-slate-700">
-                <p class="text-xs text-slate-400">นำเข้าไฟฟ้า (เพิ่มขึ้นรุนแรง)</p>
-                <p class="text-xl font-bold text-rose-400">2.87% → 15.7%</p>
-            </div>
-            <div class="border-r border-slate-700">
-                <p class="text-xs text-slate-400">พึ่งพาแก๊สในประเทศ (ลดลง)</p>
-                <p class="text-xl font-bold text-rose-400">98.6% → 59.2%</p>
-            </div>
-            <div>
-                <p class="text-xs text-slate-400">พึ่งพาน้ำมันในประเทศ (ต่ำมาก)</p>
-                <p class="text-xl font-bold text-rose-400">21.8% <span class="text-xs text-slate-500">(นำเข้า 78%)</span></p>
-            </div>
-        </div>
+        <div class="bg-slate-800/50 rounded-lg p-5 border border-slate-700">
+            <h2 class="text-sm font-bold text-slate-200 mb-4 border-l-4 border-blue-500 pl-2">🔮 Scenarios 2044 (Stock-Flow Dynamics)</h2>
+            <p class="text-xs text-slate-400 mb-6">"การพึ่งพานำเข้าดูดเงินทุนที่ควรสร้าง RE และ Demand ที่โต 5.4 TWh/ปี ทำให้สิ่งที่สร้างไม่มีวันปิด Gap ได้"</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+                <div class="relative pl-4 border-l-2 border-rose-500">
+                    <h3 class="font-bold text-white mb-1">1. Business As Usual</h3>
+                    <p class="text-xs text-slate-400 mb-2">แนวโน้มปัจจุบัน</p>
+                    <div class="bg-slate-900 p-2 rounded text-xs">
+                        <div class="flex justify-between mb-1"><span>Fossil (TWh):</span> <span class="text-rose-400 font-bold">170 → 195</span></div>
+                        <div class="flex justify-between mb-1"><span>P(Fossil ↑):</span> <span class="text-white">100%</span></div>
+                        <div class="flex justify-between"><span>Absorption:</span> <span class="text-rose-400 font-bold">> 3.51</span></div>
+                    </div>
+                </div>
+                
+                <div class="relative pl-4 border-l-2 border-blue-400">
+                    <h3 class="font-bold text-white mb-1">2. Policy Push</h3>
+                    <p class="text-xs text-slate-400 mb-2">เพิ่ม RE x3, ลด Demand 20%</p>
+                    <div class="bg-slate-900 p-2 rounded text-xs">
+                        <div class="flex justify-between mb-1"><span>Status:</span> <span class="text-amber-400">ติดกับดัก</span></div>
+                        <div class="flex justify-between"><span>Absorption:</span> <span class="text-amber-400 font-bold">1.36</span> <span class="text-[10px] text-slate-500">(> 1.0)</span></div>
+                    </div>
+                </div>
 
-        <div class="bg-slate-800 rounded-xl p-5 border border-slate-700 flex flex-col">
-            <h2 class="text-lg font-bold text-slate-200 mb-4 border-l-4 border-blue-500 pl-2">🔮 System Dynamics Simulation — Thailand Energy 2024-2044</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 h-64">
-                <div class="chart-container">
-                    <canvas id="fossilChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <canvas id="reLineChart"></canvas>
-                </div>
-                <div class="chart-container">
-                    <canvas id="gasChart"></canvas>
+                <div class="relative pl-4 border-l-2 border-emerald-500">
+                    <h3 class="font-bold text-white mb-1">3. The Loop Break</h3>
+                    <p class="text-xs text-slate-400 mb-2">เพิ่ม RE x7, ลด Demand 50%</p>
+                    <div class="bg-slate-900 p-2 rounded text-xs">
+                        <div class="flex justify-between mb-1"><span>Status:</span> <span class="text-emerald-400">กับดักแตก (Displacement)</span></div>
+                        <div class="flex justify-between"><span>Absorption:</span> <span class="text-emerald-400 font-bold">0.40</span> <span class="text-[10px] text-slate-500">(< 1.0)</span></div>
+                    </div>
                 </div>
             </div>
             
-            <div class="mt-4 flex justify-center gap-6 text-xs text-slate-300 border-t border-slate-700 pt-4">
-                <div class="flex items-center gap-2"><span class="w-4 h-1 bg-rose-500 inline-block"></span> BAU (Trends continue)</div>
-                <div class="flex items-center gap-2"><span class="w-4 h-1 bg-blue-400 border-t border-dashed inline-block"></span> Policy push (RE×3, demand -20%)</div>
-                <div class="flex items-center gap-2"><span class="w-4 h-1 bg-green-500 border-t border-dotted inline-block"></span> Loop break (RE×7, demand -45%)</div>
+            <div class="mt-6 w-full h-3 bg-slate-900 rounded-full overflow-hidden flex relative">
+                <div class="absolute text-[9px] text-slate-500 top-4 left-[28%]">Threshold (1.0)</div>
+                <div class="w-[28%] bg-emerald-500 h-full border-r border-slate-900" title="Loop Break (0.40)"></div>
+                <div class="w-[30%] bg-amber-500 h-full border-r border-slate-900" title="Policy Push (1.36)"></div>
+                <div class="w-[42%] bg-rose-500 h-full" title="BAU (3.51)"></div>
             </div>
         </div>
 
     </div>
 
     <script>
-        // ตั้งค่า Default สำหรับ Chart.js (Dark Theme)
         Chart.defaults.color = '#94a3b8';
         Chart.defaults.font.family = "'Prompt', sans-serif";
-        Chart.defaults.scale.grid.color = '#334155';
-        
-        // 1. Doughnut Chart (RE Breakdown)
-        new Chart(document.getElementById('reDoughnut'), {
-            type: 'doughnut',
+        Chart.defaults.plugins.tooltip.backgroundColor = '#1e293b';
+
+        // 1. LMDI Horizontal Bar Chart
+        const ctxLmdi = document.getElementById('lmdiChart').getContext('2d');
+        new Chart(ctxLmdi, {
+            type: 'bar',
             data: {
-                labels: ['Biomass', 'Solar+Wind', 'Others'],
+                labels: ['Activity Effect (Demand Growth)', 'Intensity Effect (Efficiency)'],
                 datasets: [{
-                    data: [48.6, 4.4, 47.0],
-                    backgroundColor: ['#f59e0b', '#10b981', '#475569'],
-                    borderWidth: 0,
-                    cutout: '70%'
+                    data: [81, -10],
+                    backgroundColor: ['#ef4444', '#10b981'],
+                    borderRadius: 4,
+                    barPercentage: 0.6
                 }]
             },
             options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: {size: 10} } } }
-            }
-        });
-
-        // 2. Scatter Chart (อ้างอิงจากรูป Quadrant)
-        new Chart(document.getElementById('scatterChart'), {
-            type: 'scatter',
-            data: {
-                datasets: [
-                    { label: 'Thailand', data: [{x: -5, y: 46.5}], backgroundColor: '#f97316', pointRadius: 6 },
-                    { label: 'Target', data: [{x: -32, y: 5}, {x: -31, y: 2}, {x: -20, y: 5}, {x: -16, y: 8}, {x: -15, y: 0}], backgroundColor: '#8b5cf6' },
-                    { label: 'GDP+Energy', data: [{x: -2, y: 22}, {x: 0, y: 3}], backgroundColor: '#ef4444' },
-                    { label: 'Transition', data: [{x: -18, y: 4}, {x: -17, y: 0}, {x: -16, y: 5}, {x: -15, y: 10}, {x: -14, y: 0}], backgroundColor: '#a855f7' },
-                    { label: 'Energy', data: [{x: -11, y: 25}, {x: -8, y: 0}, {x: -7, y: 0}, {x: -3, y: 10}, {x: 23, y: 8}], backgroundColor: '#10b981' },
-                    { label: 'GDP', data: [{x: -8, y: 10}, {x: -4, y: 6}, {x: -0.5, y: 13}, {x: -0.5, y: 0}, {x: 2.5, y: 0}, {x: 4, y: 7}], backgroundColor: '#f59e0b' }
-                ]
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                scales: {
-                    x: { title: { display: true, text: 'Fossil_Change' }, min: -35, max: 25 },
-                    y: { title: { display: true, text: 'Compound_dep' }, min: -5, max: 55 }
-                },
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
                 plugins: {
-                    annotation: { // การวาดเส้นประแบ่ง Quadrant (ถ้าต้องการสมบูรณ์ต้องใช้ plugin chartjs-plugin-annotation)
-                        // ละไว้เพื่อให้โค้ดไม่ต้องเรียกใช้ plugin ภายนอกเพิ่มเติม แต่กำหนด zero line ได้
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) => `${ctx.raw > 0 ? '+' : ''}${ctx.raw} MtCO₂e`
+                        }
                     }
+                },
+                scales: {
+                    x: {
+                        grid: { color: '#334155', drawBorder: false },
+                        title: { display: true, text: 'MtCO₂e', font: { size: 10 } }
+                    },
+                    y: { grid: { display: false }, ticks: { font: { size: 11 } } }
                 }
             }
         });
 
-        // --- Common Options for Line Charts ---
-        const lineOptions = {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-            elements: { point: { radius: 0 } }, // ไม่แสดงจุดบนเส้น
-            scales: { x: { ticks: { maxTicksLimit: 5 } } }
-        };
-        const years = Array.from({length: 21}, (_, i) => 2024 + i);
-
-        // 3. Line Chart: Fossil (TWh)
-        new Chart(document.getElementById('fossilChart'), {
-            type: 'line',
+        // 2. RE Breakdown Doughnut
+        const ctxRe = document.getElementById('reDoughnut').getContext('2d');
+        new Chart(ctxRe, {
+            type: 'doughnut',
             data: {
-                labels: years,
-                datasets: [
-                    { label: 'BAU', data: years.map(y => 170 + (y-2024)*1.25), borderColor: '#ef4444', borderWidth: 2 },
-                    { label: 'Policy push', data: years.map(y => 170 - (y-2024)*0.6), borderColor: '#60a5fa', borderDash: [5, 5], borderWidth: 2 },
-                    { label: 'Loop break', data: years.map(y => 170 - (y-2024)*4.8), borderColor: '#22c55e', borderDash: [5, 5], borderWidth: 2 }
-                ]
+                labels: ['Biomass Combustion', 'Solar & Wind', 'Other Base'],
+                datasets: [{
+                    data: [49.0, 4.4, 46.6],
+                    backgroundColor: ['#f59e0b', '#10b981', '#334155'],
+                    borderWidth: 0,
+                    cutout: '75%'
+                }]
             },
-            options: { ...lineOptions, plugins: { title: { display: true, text: 'Fossil electricity (TWh)', color: '#fff', font: {size: 14} } }, scales: { y: { min: 70, max: 210 } } }
-        });
-
-        // 4. Line Chart: RE (TWh)
-        new Chart(document.getElementById('reLineChart'), {
-            type: 'line',
-            data: {
-                labels: years,
-                datasets: [
-                    { label: 'BAU', data: years.map(y => 30 + (y-2024)*1), borderColor: '#ef4444', borderWidth: 2 },
-                    { label: 'Policy push', data: years.map(y => 30 + (y-2024)*3.1), borderColor: '#60a5fa', borderDash: [5, 5], borderWidth: 2 },
-                    { label: 'Loop break', data: years.map(y => 30 + (y-2024)*7.3), borderColor: '#22c55e', borderDash: [5, 5], borderWidth: 2 }
-                ]
-            },
-            options: { ...lineOptions, plugins: { title: { display: true, text: 'Renewable electricity (TWh)', color: '#fff', font: {size: 14} } }, scales: { y: { min: 30, max: 180 } } }
-        });
-
-        // 5. Line Chart: Gas (%)
-        new Chart(document.getElementById('gasChart'), {
-            type: 'line',
-            data: {
-                labels: years,
-                datasets: [
-                    { label: 'BAU', data: years.map(y => 59.2 - (y-2024)*1.01), borderColor: '#ef4444', borderWidth: 2 },
-                    { label: 'Policy push', data: years.map(y => 59.2 - (y-2024)*0.5), borderColor: '#60a5fa', borderDash: [5, 5], borderWidth: 2 },
-                    { label: 'Loop break', data: years.map(y => 59.2), borderColor: '#22c55e', borderDash: [5, 5], borderWidth: 2 }
-                ]
-            },
-            options: { ...lineOptions, plugins: { title: { display: true, text: 'Gas self-sufficiency (%)', color: '#fff', font: {size: 14} } }, scales: { y: { min: 30, max: 60 } } }
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { boxWidth: 8, font: { size: 10 }, color: '#cbd5e1' }
+                    }
+                }
+            }
         });
     </script>
 </body>
