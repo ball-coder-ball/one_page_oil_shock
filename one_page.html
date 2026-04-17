@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Convergence Trap - 1 Pager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600;800&display=swap');
+        body { font-family: 'Prompt', sans-serif; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="flex justify-center py-10 text-slate-800">
+
+    <div class="w-full max-w-3xl bg-white shadow-2xl rounded-2xl overflow-hidden flex flex-col">
+        
+        <div class="bg-indigo-900 text-white p-8 text-center">
+            <h1 class="text-4xl font-extrabold mb-2">🎯 The Convergence Trap</h1>
+            <p class="text-xl text-indigo-200">ความเปราะบางทางพลังงานของไทยที่ซ่อนอยู่ภายใต้ตัวเลขที่ดูดี</p>
+        </div>
+
+        <div class="p-8 flex flex-col gap-8">
+            
+            <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-indigo-800 mb-4 border-b-2 border-indigo-200 pb-2">📊 The Illusion (ภาพลวงตา)</h2>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-white p-4 rounded-lg shadow border-l-4 border-teal-500">
+                            <p class="text-sm text-slate-500 font-semibold">Carbon Intensity ลดลง</p>
+                            <p class="text-2xl font-bold text-teal-600">607 → 555 <span class="text-sm">gCO₂/kWh</span> <span class="text-green-500">✓</span></p>
+                            <hr class="my-2">
+                            <p class="text-sm text-slate-500 font-semibold">แต่ GHG รวมกลับเพิ่มขึ้น 2 เท่า!</p>
+                            <p class="text-2xl font-bold text-rose-600">58 → 111 <span class="text-sm">MtCO₂e</span> <span class="text-red-500">✗</span></p>
+                        </div>
+                        <div class="bg-indigo-50 p-4 rounded-lg shadow border border-indigo-100 text-center">
+                            <p class="text-sm text-indigo-800 font-semibold mb-1">Absorption Ratio</p>
+                            <p class="text-4xl font-extrabold text-indigo-600">3.51×</p>
+                            <p class="text-xs text-indigo-700 mt-2">ทุก 1 TWh RE ที่เพิ่มขึ้น<br>Demand กลืนไป 3.51 TWh (Fossil ยังโต)</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow flex flex-col items-center justify-center">
+                        <p class="text-sm font-semibold text-center mb-2">Renewables 14.8% มาจากไหน?</p>
+                        <div class="relative w-40 h-40">
+                            <canvas id="reChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <h2 class="text-2xl font-bold text-amber-600 mb-4 border-b-2 border-amber-200 pb-2">⚡ Triple Dependency (เปราะบาง 3 ช่องทาง)</h2>
+                <p class="text-sm text-slate-500 mb-4">แย่ลงพร้อมกันอย่างมีนัยสำคัญ (p&lt;0.001)</p>
+                <div class="w-full h-48">
+                    <canvas id="dependencyChart"></canvas>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-6">
+                <div class="bg-teal-50 p-6 rounded-xl border border-teal-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-teal-800 mb-3">🌍 Cross-Country Proof</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-teal-500 font-bold">▶</span>
+                            <span><b>6/59 ประเทศ</b> มี pattern ภาพลวงตาแบบเดียวกัน</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-teal-500 font-bold">▶</span>
+                            <span>ประเทศกลุ่ม Transition Peers (17 ประเทศ) มี Absorption Ratio <b>&lt; 1.0</b> (แต่ไทย = 3.51×)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-rose-50 p-6 rounded-xl border border-rose-200 shadow-sm">
+                    <h3 class="text-xl font-bold text-rose-800 mb-3">🔮 Scenarios 2044</h3>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border-l-4 border-slate-400 text-sm">
+                            <b>BAU:</b> โอกาส Fossil โต = 100% (170→195 TWh)
+                        </div>
+                        <div class="bg-white p-2 rounded border-l-4 border-orange-400 text-sm">
+                            <b>Policy Push:</b> Absorption 1.36× (ยังติดกับดัก)
+                        </div>
+                        <div class="bg-white p-2 rounded border-l-4 border-green-500 text-sm">
+                            <b>Loop Break:</b> ต้องทำ RE ×7 <u>พร้อมกับ</u> ลด Demand 45%
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bg-slate-800 text-slate-400 text-xs p-4 text-center">
+            <b>Statistical Methods:</b> OLS + Newey-West HAC · LMDI (Activity 8.3× Intensity) · PELT Structural Breaks · Tapio Decoupling · Stock-Flow System Dynamics
+        </div>
+
+    </div>
+
+    <script>
+        // กราฟวงกลม (Doughnut) สัดส่วนพลังงานหมุนเวียน
+        const ctxRE = document.getElementById('reChart').getContext('2d');
+        new Chart(ctxRE, {
+            type: 'doughnut',
+            data: {
+                labels: ['ชีวมวล (Biomass)', 'Solar + Wind', 'อื่นๆ'],
+                datasets: [{
+                    data: [48.6, 4.4, 47.0],
+                    backgroundColor: ['#f59e0b', '#10b981', '#cbd5e1'], // Amber, Emerald, Slate
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { font: { family: 'Prompt', size: 10 } } }
+                }
+            }
+        });
+
+        // กราฟแท่ง (Bar) เปรียบเทียบความเปราะบาง
+        const ctxDep = document.getElementById('dependencyChart').getContext('2d');
+        new Chart(ctxDep, {
+            type: 'bar',
+            data: {
+                labels: ['นำเข้าไฟฟ้า (นำเข้าเพิ่ม)', 'พึ่งพาแก๊สในประเทศ (ลดลง)', 'พึ่งพาน้ำมันในประเทศ (ต่ำมาก)'],
+                datasets: [
+                    {
+                        label: 'อดีต (จุดเริ่มต้น)',
+                        data: [2.87, 98.6, null], // null สำหรับน้ำมันเพราะมีแค่ค่าปัจจุบันในโจทย์
+                        backgroundColor: '#94a3b8' // Slate 400
+                    },
+                    {
+                        label: 'ปัจจุบัน',
+                        data: [15.7, 59.2, 21.8],
+                        backgroundColor: ['#ef4444', '#ef4444', '#ef4444'] // Red 500
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: { beginAtZero: true, max: 100, ticks: { callback: function(value) { return value + "%" } } }
+                },
+                plugins: {
+                    legend: { position: 'top', labels: { font: { family: 'Prompt' } } },
+                    tooltip: { callbacks: { label: function(context) { return context.raw + "%"; } } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
